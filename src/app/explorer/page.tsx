@@ -11,8 +11,8 @@ export default function ExplorerPage() {
   const [selectedPortfolio, setSelectedPortfolio] = useState('All');
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
-  const countries = ['All', 'USA', 'UK', 'Canada', 'Singapore', 'Europe'];
-  const tiers = ['All', 'Pinnacle / Ivy+', 'Global Top 30', 'High-ROI STEM'];
+  const countries = ['All', 'USA', 'UK', 'Europe', 'Canada', 'Singapore', 'Australia', 'New Zealand', 'Asia'];
+  const tiers = ['All', 'Pinnacle / Ivy+', 'Global Top 30', 'High-ROI STEM', 'Selective Direct-Admit'];
   const portfolioTypes = [
     'All',
     'SlideRoom Maker',
@@ -27,7 +27,8 @@ export default function ExplorerPage() {
       const matchesSearch =
         uni.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         uni.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        uni.recommendedSpike.toLowerCase().includes(searchQuery.toLowerCase());
+        uni.recommendedSpike.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        uni.description.toLowerCase().includes(searchQuery.toLowerCase());
 
       const matchesCountry = selectedCountry === 'All' || uni.country === selectedCountry;
       const matchesTier = selectedTier === 'All' || uni.tier === selectedTier;
@@ -64,7 +65,7 @@ export default function ExplorerPage() {
         </div>
       </header>
 
-      {/* Main Content Area */}
+      {/* Main Container */}
       <main className="max-w-7xl mx-auto px-6 py-12">
         {/* Header Hero */}
         <div className="max-w-3xl mx-auto text-center mb-12">
@@ -75,17 +76,17 @@ export default function ExplorerPage() {
             Global STEM University Directory
           </h1>
           <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
-            Analyze exact portfolio evaluation mechanisms, departmental faculty review policies, and research spikes required across top-tier international institutions.
+            Analyze exact portfolio evaluation mechanisms, departmental faculty review policies, and research spikes required across 70+ top-tier global institutions (US, UK, Europe, Italy, Germany, Canada, Australia & New Zealand).
           </p>
         </div>
 
-        {/* Filter Control Center */}
+        {/* Filter Controls */}
         <div className="bg-[#0B1120] border border-slate-800 rounded-2xl p-6 sm:p-8 mb-10 shadow-2xl">
-          {/* Search Input */}
+          {/* Search Box */}
           <div className="relative mb-6">
             <input
               type="text"
-              placeholder="Search by university name, city, or research topic (e.g. AI, Systems, Math)..."
+              placeholder="Search by university, city, country (e.g. Italy, New Zealand, Germany), or topic (e.g. AI, Robotics, TOLC-I)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full bg-[#030712] border border-slate-700/80 rounded-xl px-4 py-3.5 pl-11 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
@@ -101,9 +102,9 @@ export default function ExplorerPage() {
             )}
           </div>
 
-          {/* Tag Filters */}
+          {/* Filter Pills */}
           <div className="space-y-4 text-xs">
-            {/* Country */}
+            {/* Region */}
             <div className="flex flex-col sm:flex-row sm:items-center gap-2">
               <span className="text-slate-400 font-semibold w-20 shrink-0">Region:</span>
               <div className="flex flex-wrap gap-1.5">
@@ -123,7 +124,7 @@ export default function ExplorerPage() {
               </div>
             </div>
 
-            {/* Selectivity Tier */}
+            {/* Selectivity */}
             <div className="flex flex-col sm:flex-row sm:items-center gap-2">
               <span className="text-slate-400 font-semibold w-20 shrink-0">Selectivity:</span>
               <div className="flex flex-wrap gap-1.5">
@@ -143,7 +144,7 @@ export default function ExplorerPage() {
               </div>
             </div>
 
-            {/* Portfolio Type */}
+            {/* Portfolio Mechanism */}
             <div className="flex flex-col sm:flex-row sm:items-center gap-2">
               <span className="text-slate-400 font-semibold w-20 shrink-0">Portfolio:</span>
               <div className="flex flex-wrap gap-1.5">
@@ -185,7 +186,7 @@ export default function ExplorerPage() {
           )}
         </div>
 
-        {/* University Grid */}
+        {/* Universities Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredUniversities.map((uni) => {
             const isExpanded = expandedId === uni.id;
@@ -212,7 +213,7 @@ export default function ExplorerPage() {
                   </h3>
                   <p className="text-xs text-slate-400 mb-5">{uni.location}</p>
 
-                  {/* Quantitative Box */}
+                  {/* Metrics Box */}
                   <div className="grid grid-cols-2 gap-2 bg-[#030712] p-3.5 rounded-xl border border-slate-800/80 mb-4">
                     <div>
                       <span className="text-[10px] uppercase font-bold text-slate-500 block mb-0.5">Selectivity</span>
