@@ -2,7 +2,7 @@
   id: string;
   name: string;
   location: string;
-  country: 'USA' | 'UK' | 'Canada' | 'Singapore' | 'Europe' | 'Australia' | 'Asia';
+  country: 'USA' | 'UK' | 'Canada' | 'Germany' | 'Italy' | 'New Zealand' | 'Australia' | 'Singapore' | 'Europe / Asia';
   tier: 'Pinnacle / Ivy+' | 'Global Top 30' | 'High-ROI STEM' | 'Selective Direct-Admit';
   acceptanceRate: string;
   portfolioType: 'SlideRoom Maker' | 'Research Preprint' | 'AIF / Technical Form' | 'UCAS Technical Narrative' | 'Direct Video/Paper';
@@ -14,7 +14,7 @@
 }
 
 export const UNIVERSITIES: University[] = [
-  // USA - Pinnacle / Ivy+
+  // ================= USA =================
   {
     id: 'mit',
     name: 'Massachusetts Institute of Technology (MIT)',
@@ -113,8 +113,6 @@ export const UNIVERSITIES: University[] = [
     keyDeadlines: 'ED: Nov 1 | RD: Jan 2',
     description: 'Evaluates major-specific engineering fit with strong emphasis on independent coding rigor and published technical findings.'
   },
-
-  // USA - Global Top 30 / High-ROI STEM
   {
     id: 'berkeley',
     name: 'University of California, Berkeley (UCB)',
@@ -142,20 +140,6 @@ export const UNIVERSITIES: University[] = [
     recommendedSpike: 'Advanced mathematical competition scores, AI applications in societal domains, and demonstrated leadership in coding initiatives.',
     keyDeadlines: 'UC Filing Window: Oct 1 – Nov 30',
     description: 'Samueli School of Engineering direct CS admit. High academic indexing combined with exceptional technical leadership in UC Activity sections.'
-  },
-  {
-    id: 'ucsd',
-    name: 'University of California, San Diego (UCSD)',
-    location: 'La Jolla, CA',
-    country: 'USA',
-    tier: 'Global Top 30',
-    acceptanceRate: '~24% (Halıcıoğlu / CSE: <10%)',
-    portfolioType: 'AIF / Technical Form',
-    primaryPortal: 'UC Application System',
-    facultyReview: false,
-    recommendedSpike: 'Bioinformatics pipelines, deep learning computer vision projects, and AP Computer Science A / Calculus BC top percentiles.',
-    keyDeadlines: 'UC Filing Window: Oct 1 – Nov 30',
-    description: 'Global leader in AI, Systems, and Bioinformatics. Highly selective capped-major screening for CSE and Data Science applicants.'
   },
   {
     id: 'uiuc',
@@ -186,20 +170,6 @@ export const UNIVERSITIES: University[] = [
     description: 'Values students who build functional tools. Looks for deep involvement in STEM competitions, engineering design teams, and independent research.'
   },
   {
-    id: 'umich',
-    name: 'University of Michigan - Ann Arbor',
-    location: 'Ann Arbor, MI',
-    country: 'USA',
-    tier: 'Global Top 30',
-    acceptanceRate: '~18% (CoE CS: <9%)',
-    portfolioType: 'Research Preprint',
-    primaryPortal: 'Common App (Advance Selection for CS)',
-    facultyReview: false,
-    recommendedSpike: 'Substantial programming project portfolio, SAT Math 780+, and peer-reviewed technical whitepapers in applied machine learning.',
-    keyDeadlines: 'EA: Nov 1 | RD: Feb 1',
-    description: 'Requires advance selection for Computer Science admission. Candidates must demonstrate deep mathematical engagement and verified software artifacts.'
-  },
-  {
     id: 'purdue',
     name: 'Purdue University',
     location: 'West Lafayette, IN',
@@ -213,8 +183,6 @@ export const UNIVERSITIES: University[] = [
     keyDeadlines: 'EA (Priority for CS): Nov 1 | RD: Jan 15',
     description: 'Strictly direct-admit for Computer Science. Submitting early (Nov 1) with strong math credentials and documented project portfolios is essential.'
   },
-
-  // USA - High-Value Safeties & Rolling Admissions
   {
     id: 'newhaven',
     name: 'University of New Haven',
@@ -243,22 +211,310 @@ export const UNIVERSITIES: University[] = [
     keyDeadlines: 'Rolling (Fall Intake: June 15)',
     description: 'Tier 1 Carnegie R1 research institution offering very high accessibility and accessible out-of-state tuition waiver pathways.'
   },
+
+  // ================= ITALY =================
   {
-    id: 'marshall',
-    name: 'Marshall University',
-    location: 'Huntington, WV',
-    country: 'USA',
-    tier: 'Selective Direct-Admit',
-    acceptanceRate: '~97%',
-    portfolioType: 'Direct Video/Paper',
-    primaryPortal: 'Marshall Direct Admissions',
+    id: 'polimi',
+    name: 'Politecnico di Milano (PoliMi)',
+    location: 'Milan, Lombardy',
+    country: 'Italy',
+    tier: 'Global Top 30',
+    acceptanceRate: '~15%',
+    portfolioType: 'AIF / Technical Form',
+    primaryPortal: 'PoliMi Online Services (TOL / TOLC-I / SAT)',
+    facultyReview: true,
+    recommendedSpike: 'SAT Math 750+ / High TOLC-I Engineering score, robotics or microcontroller hardware prototypes.',
+    keyDeadlines: 'Early Wave: Nov – Feb | Late: May',
+    description: 'Italy’s #1 engineering university (Top 20 global). Offers world-class English-taught degrees with tuition tied to family income (~€1,000–€3,800/yr) and DSU full scholarships.'
+  },
+  {
+    id: 'sapienza',
+    name: 'Sapienza University of Rome',
+    location: 'Rome, Lazio',
+    country: 'Italy',
+    tier: 'Global Top 30',
+    acceptanceRate: '~20%',
+    portfolioType: 'Research Preprint',
+    primaryPortal: 'Sapienza Infostud + TOLC-I / SAT',
+    facultyReview: true,
+    recommendedSpike: 'TOLC-I score 32+/50 or SAT 1400+, machine learning projects, and computational algebra research write-up.',
+    keyDeadlines: 'Non-EU Call: Feb – April',
+    description: 'Offers the prestigious English-taught BSc in Applied Computer Science and AI (ACSAI) at ultra-low tuition fees (~€1,000–€1,500/year) with complete regional stipend eligibility.'
+  },
+  {
+    id: 'unibo',
+    name: 'University of Bologna (UNIBO)',
+    location: 'Bologna, Emilia-Romagna',
+    country: 'Italy',
+    tier: 'Global Top 30',
+    acceptanceRate: '~22%',
+    portfolioType: 'Research Preprint',
+    primaryPortal: 'Studenti Online (TOLC-I / SAT)',
+    facultyReview: true,
+    recommendedSpike: 'High SAT / TOLC-I percentile, discrete mathematics problem-solving, and foundational open-source contributions.',
+    keyDeadlines: 'Intake Calls: Feb – May',
+    description: 'The world’s oldest university, boasting a premier European computer science faculty, high international prestige, and extensive ER.GO merit study grants.'
+  },
+  {
+    id: 'polito',
+    name: 'Politecnico di Torino (PoliTo)',
+    location: 'Turin, Piedmont',
+    country: 'Italy',
+    tier: 'High-ROI STEM',
+    acceptanceRate: '~25%',
+    portfolioType: 'AIF / Technical Form',
+    primaryPortal: 'Apply@PoliTo (TIL-I Engineering Exam / SAT)',
     facultyReview: false,
-    recommendedSpike: 'Direct high school computing projects and standard English proficiency certification.',
-    keyDeadlines: 'Rolling Admissions',
-    description: 'Straightforward admission pathway with low tuition costs (~$8k–$16k) and no mandatory GRE/SAT requirements.'
+    recommendedSpike: 'TIL-I Engineering entrance test score 60+, embedded automotive software systems, and data structures proficiency.',
+    keyDeadlines: 'TIL-I Test Sessions: March – July',
+    description: 'Premier Italian technical institute with deep automotive and industrial software ties (Fiat/Stellantis), offering 100% English Computer Engineering degrees.'
+  },
+  {
+    id: 'padua',
+    name: 'University of Padua',
+    location: 'Padua, Veneto',
+    country: 'Italy',
+    tier: 'High-ROI STEM',
+    acceptanceRate: '~30%',
+    portfolioType: 'Research Preprint',
+    primaryPortal: 'ApplyUniPD (TOLC-I / SAT)',
+    facultyReview: true,
+    recommendedSpike: 'Quantum computing fundamentals, AI research papers, and top performance in secondary school math.',
+    keyDeadlines: 'Call 1: Nov – Feb | Call 2: March – May',
+    description: 'Historic institution offering high-caliber English-taught Computer Science degrees with specialized focus on AI, data analysis, and quantum computing.'
   },
 
-  // Canada - Pinnacle, High-ROI & Regional Safeties
+  // ================= NEW ZEALAND =================
+  {
+    id: 'auckland',
+    name: 'University of Auckland',
+    location: 'Auckland',
+    country: 'New Zealand',
+    tier: 'Global Top 30',
+    acceptanceRate: '~45%',
+    portfolioType: 'AIF / Technical Form',
+    primaryPortal: 'Auckland Direct International Portal',
+    facultyReview: false,
+    recommendedSpike: 'Strong Class 12 mathematics marks (80%+), full-stack software development projects, and cloud computing interest.',
+    keyDeadlines: 'Semester 1 (Feb): Dec 1 | Semester 2 (July): May 1',
+    description: 'New Zealand’s #1 university (Top 70 Global). World-class Computer Science and Software Engineering programs in Auckland’s thriving tech corridor.'
+  },
+  {
+    id: 'canterbury_nz',
+    name: 'University of Canterbury',
+    location: 'Christchurch, South Island',
+    country: 'New Zealand',
+    tier: 'High-ROI STEM',
+    acceptanceRate: '~55%',
+    portfolioType: 'Direct Video/Paper',
+    primaryPortal: 'myUC International Portal',
+    facultyReview: true,
+    recommendedSpike: 'Robotics prototypes, computer vision experiments, or human-computer interaction (HITLab NZ) interest.',
+    keyDeadlines: 'Semester 1 (Feb): Dec 1 | Semester 2 (July): April 30',
+    description: 'Global leader in applied robotics and computer vision. Offers world-renowned engineering labs and fast-track employment in Christchurch’s tech ecosystem.'
+  },
+  {
+    id: 'victoria_nz',
+    name: 'Victoria University of Wellington',
+    location: 'Wellington, North Island',
+    country: 'New Zealand',
+    tier: 'High-ROI STEM',
+    acceptanceRate: '~60%',
+    portfolioType: 'Research Preprint',
+    primaryPortal: 'Victoria International Direct Portal',
+    facultyReview: false,
+    recommendedSpike: 'Cybersecurity defense setups, AI machine learning models, and digital forensics projects.',
+    keyDeadlines: 'Trimester 1 (Feb): Dec 1 | Trimester 2 (July): May 1',
+    description: 'Located in New Zealand’s capital city, famous for AI, cybersecurity, and direct research connections to national agencies and tech firms.'
+  },
+  {
+    id: 'otago_nz',
+    name: 'University of Otago',
+    location: 'Dunedin, South Island',
+    country: 'New Zealand',
+    tier: 'High-ROI STEM',
+    acceptanceRate: '~65%',
+    portfolioType: 'Direct Video/Paper',
+    primaryPortal: 'eVision Otago Portal',
+    facultyReview: false,
+    recommendedSpike: 'Applied Data Science projects, Python software tools, and sound quantitative foundations.',
+    keyDeadlines: 'Semester 1: Dec 10 | Semester 2: May 8',
+    description: 'New Zealand’s oldest university, offering high-quality Bachelor of Applied Science degrees in AI, Data Science, and Software Engineering in a student-friendly city.'
+  },
+
+  // ================= GERMANY =================
+  {
+    id: 'tum',
+    name: 'Technical University of Munich (TUM)',
+    location: 'Munich, Bavaria',
+    country: 'Germany',
+    tier: 'Global Top 30',
+    acceptanceRate: '~18%',
+    portfolioType: 'AIF / Technical Form',
+    primaryPortal: 'TUMonline (Aptitude Assessment)',
+    facultyReview: true,
+    recommendedSpike: 'Rigorous calculus background, German language/English proficiency, and written essay on computational engineering challenges.',
+    keyDeadlines: 'Winter Semester: May 15 – July 15',
+    description: 'Germany’s #1 university for Computer Science and Informatics. Uses a 2-stage Aptitude Assessment Process (Curriculum Analysis + Interview).'
+  },
+  {
+    id: 'chemnitz',
+    name: 'Chemnitz University of Technology',
+    location: 'Chemnitz, Saxony',
+    country: 'Germany',
+    tier: 'Selective Direct-Admit',
+    acceptanceRate: '~71%',
+    portfolioType: 'Direct Video/Paper',
+    primaryPortal: 'Uni-Assist / Direct Portal',
+    facultyReview: false,
+    recommendedSpike: 'Solid foundational mathematics; German/English B2/C1 qualification for tuition-free public university entry.',
+    keyDeadlines: 'Winter: July 15 | Summer: Jan 15',
+    description: 'German public university with zero tuition fees and high international acceptance for applied computer science degrees.'
+  },
+  {
+    id: 'augsburg',
+    name: 'University of Augsburg',
+    location: 'Augsburg, Bavaria',
+    country: 'Germany',
+    tier: 'Selective Direct-Admit',
+    acceptanceRate: '~69%',
+    portfolioType: 'Direct Video/Paper',
+    primaryPortal: 'Uni-Assist',
+    facultyReview: false,
+    recommendedSpike: 'High school math/physics credits and recognized German/English language certificate.',
+    keyDeadlines: 'Winter: July 15',
+    description: 'Public Bavarian university with high acceptance rates for Computer Science in Engineering, featuring nominal administration fees.'
+  },
+  {
+    id: 'deggendorf',
+    name: 'Deggendorf Institute of Technology (DIT)',
+    location: 'Deggendorf, Bavaria',
+    country: 'Germany',
+    tier: 'Selective Direct-Admit',
+    acceptanceRate: '~60%',
+    portfolioType: 'Direct Video/Paper',
+    primaryPortal: 'DIT Primuss Portal',
+    facultyReview: false,
+    recommendedSpike: 'Applied computing project write-ups and successful completion of DIT online assessment test.',
+    keyDeadlines: 'Application: April 15 – July 15',
+    description: 'Leading Bavarian UAS offering 100% English-taught Bachelor programs in Applied Computer Science and AI with direct industry internships.'
+  },
+  {
+    id: 'furtwangen',
+    name: 'Furtwangen University (HFU)',
+    location: 'Furtwangen, Baden-Württemberg',
+    country: 'Germany',
+    tier: 'Selective Direct-Admit',
+    acceptanceRate: 'Open Admission (Zulassungsfrei)',
+    portfolioType: 'Direct Video/Paper',
+    primaryPortal: 'HFU Online Portal',
+    facultyReview: false,
+    recommendedSpike: 'Direct high school completion meeting statutory entry requirements (B.Sc. Security & Safety Engineering).',
+    keyDeadlines: 'Winter: July 15',
+    description: 'Offers Zulassungsfrei (open admission without numerus clausus restriction) for specialized engineering programs combining IT security and systems.'
+  },
+
+  // ================= UK =================
+  {
+    id: 'oxford',
+    name: 'University of Oxford',
+    location: 'Oxford',
+    country: 'UK',
+    tier: 'Pinnacle / Ivy+',
+    acceptanceRate: '~6% (Computer Science)',
+    portfolioType: 'UCAS Technical Narrative',
+    primaryPortal: 'UCAS + MAT / Interview',
+    facultyReview: true,
+    recommendedSpike: 'MAT (Mathematics Admissions Test) mastery, deep exploration of discrete mathematics, logic proofs, and algorithmic problem sets.',
+    keyDeadlines: 'Hard Deadline: Oct 15',
+    description: 'Tutors evaluate applicants through mathematical entrance tests and technical admissions interviews where candidates live-solve unseen proof problems.'
+  },
+  {
+    id: 'cambridge',
+    name: 'University of Cambridge',
+    location: 'Cambridge',
+    country: 'UK',
+    tier: 'Pinnacle / Ivy+',
+    acceptanceRate: '~8% (Computer Science)',
+    portfolioType: 'UCAS Technical Narrative',
+    primaryPortal: 'UCAS + TMUA / College Interview',
+    facultyReview: true,
+    recommendedSpike: 'TMUA distinction, foundational understanding of computer systems, lambda calculus, or number theory projects.',
+    keyDeadlines: 'Hard Deadline: Oct 15',
+    description: 'Admissions decisions depend on academic test percentiles and academic interviews evaluating mathematical adaptability under faculty guidance.'
+  },
+  {
+    id: 'imperial',
+    name: 'Imperial College London',
+    location: 'London',
+    country: 'UK',
+    tier: 'Global Top 30',
+    acceptanceRate: '~11% (Computing: <7%)',
+    portfolioType: 'UCAS Technical Narrative',
+    primaryPortal: 'UCAS (Course-specific)',
+    facultyReview: true,
+    recommendedSpike: 'TMUA / ESAT test performance, analysis of foundational papers in distributed systems or deep learning in the personal statement.',
+    keyDeadlines: 'UCAS Equal Consideration: Jan 29',
+    description: 'Pure academic meritocracy. 80% of the UCAS personal statement must analyze advanced subject readings, computational problem sets, and mathematical rigor.'
+  },
+  {
+    id: 'ucl',
+    name: 'University College London (UCL)',
+    location: 'London',
+    country: 'UK',
+    tier: 'Global Top 30',
+    acceptanceRate: '~12% (Computer Science: <9%)',
+    portfolioType: 'UCAS Technical Narrative',
+    primaryPortal: 'UCAS + STAT Test',
+    facultyReview: true,
+    recommendedSpike: 'STAT (Special Tertiary Admissions Test) / Mathematics depth, self-initiated research projects on algorithms or neural networks.',
+    keyDeadlines: 'UCAS Equal Consideration: Jan 29',
+    description: 'High weighting on mathematical aptitude and course-specific technical exploration presented in the personal statement and STAT assessment.'
+  },
+  {
+    id: 'edinburgh',
+    name: 'University of Edinburgh',
+    location: 'Edinburgh, Scotland',
+    country: 'UK',
+    tier: 'Global Top 30',
+    acceptanceRate: '~28% (Informatics: ~12%)',
+    portfolioType: 'UCAS Technical Narrative',
+    primaryPortal: 'UCAS',
+    facultyReview: true,
+    recommendedSpike: 'Natural Language Processing or robotics projects, rigorous calculus, and analysis of foundational AI research papers in the UCAS statement.',
+    keyDeadlines: 'UCAS Equal Consideration: Jan 29',
+    description: 'School of Informatics is the UK’s premier AI center. Demands top mathematics grades and direct technical subject engagement in essays.'
+  },
+  {
+    id: 'cardiff_pathway',
+    name: 'Cardiff University (International Year One)',
+    location: 'Cardiff, Wales',
+    country: 'UK',
+    tier: 'Selective Direct-Admit',
+    acceptanceRate: '~80%',
+    portfolioType: 'AIF / Technical Form',
+    primaryPortal: 'Cardiff Direct / StudyGroup Portal',
+    facultyReview: false,
+    recommendedSpike: 'High school graduation with 65%+ in Math; guaranteed progression into Year 2 of BSc Computer Science.',
+    keyDeadlines: 'Rolling (Intake: Sept / Jan)',
+    description: 'Russell Group member offering a structured International Year One pathway with guaranteed Year 2 progression and £2k–£10k scholarships.'
+  },
+  {
+    id: 'portsmouth',
+    name: 'University of Portsmouth',
+    location: 'Portsmouth',
+    country: 'UK',
+    tier: 'Selective Direct-Admit',
+    acceptanceRate: '~70%',
+    portfolioType: 'Direct Video/Paper',
+    primaryPortal: 'UCAS / Direct Portal',
+    facultyReview: true,
+    recommendedSpike: 'Documented programming portfolio demonstrating object-oriented code, software design patterns, and live web apps.',
+    keyDeadlines: 'Rolling Admissions / UCAS Jan',
+    description: 'Requires a comprehensive project portfolio for advanced MEng CS entry, demonstrating practical code snippets and problem-solving.'
+  },
+
+  // ================= CANADA =================
   {
     id: 'waterloo',
     name: 'University of Waterloo',
@@ -316,20 +572,6 @@ export const UNIVERSITIES: University[] = [
     description: 'Among the lowest international tuition rates across Canada (CAD $11k-$14k/yr) with exceptional PR eligibility via the Atlantic Immigration Program (AIP).'
   },
   {
-    id: 'windsor',
-    name: 'University of Windsor',
-    location: 'Windsor, Ontario',
-    country: 'Canada',
-    tier: 'Selective Direct-Admit',
-    acceptanceRate: '~70%',
-    portfolioType: 'AIF / Technical Form',
-    primaryPortal: 'OUAC / Direct Portal',
-    facultyReview: false,
-    recommendedSpike: 'Minimum 70% average with 75% in math for co-op CS; practical programming projects.',
-    keyDeadlines: 'Fall: May 1',
-    description: 'Located in Ontario’s automotive/tech corridor, offering accessible direct-admit CS with strong co-op employer connections.'
-  },
-  {
     id: 'coquitlam',
     name: 'Coquitlam College (UBC/SFU Transfer Pathway)',
     location: 'Coquitlam, BC',
@@ -344,165 +586,35 @@ export const UNIVERSITIES: University[] = [
     description: 'Guaranteed BC Transfer System curriculum allowing students with lower initial scores to complete 1st/2nd year credits and transfer into UBC or SFU.'
   },
 
-  // UK - Elite, Middle-Tier & Accessible Pathways
+  // ================= AUSTRALIA & SINGAPORE & OTHER =================
   {
-    id: 'oxford',
-    name: 'University of Oxford',
-    location: 'Oxford',
-    country: 'UK',
+    id: 'nus',
+    name: 'National University of Singapore (NUS)',
+    location: 'Singapore',
+    country: 'Singapore',
     tier: 'Pinnacle / Ivy+',
-    acceptanceRate: '~6% (Computer Science)',
-    portfolioType: 'UCAS Technical Narrative',
-    primaryPortal: 'UCAS + MAT / Interview',
-    facultyReview: true,
-    recommendedSpike: 'MAT (Mathematics Admissions Test) mastery, deep exploration of discrete mathematics, logic proofs, and algorithmic problem sets.',
-    keyDeadlines: 'Hard Deadline: Oct 15',
-    description: 'Tutors evaluate applicants through mathematical entrance tests and technical admissions interviews where candidates live-solve unseen proof problems.'
-  },
-  {
-    id: 'cambridge',
-    name: 'University of Cambridge',
-    location: 'Cambridge',
-    country: 'UK',
-    tier: 'Pinnacle / Ivy+',
-    acceptanceRate: '~8% (Computer Science)',
-    portfolioType: 'UCAS Technical Narrative',
-    primaryPortal: 'UCAS + TMUA / College Interview',
-    facultyReview: true,
-    recommendedSpike: 'TMUA distinction, foundational understanding of computer systems, lambda calculus, or number theory projects.',
-    keyDeadlines: 'Hard Deadline: Oct 15',
-    description: 'Admissions decisions depend on academic test percentiles and academic interviews evaluating mathematical adaptability under faculty guidance.'
-  },
-  {
-    id: 'imperial',
-    name: 'Imperial College London',
-    location: 'London',
-    country: 'UK',
-    tier: 'Global Top 30',
-    acceptanceRate: '~11% (Computing: <7%)',
-    portfolioType: 'UCAS Technical Narrative',
-    primaryPortal: 'UCAS (Course-specific)',
-    facultyReview: true,
-    recommendedSpike: 'TMUA / ESAT test performance, analysis of foundational papers in distributed systems or deep learning in the personal statement.',
-    keyDeadlines: 'UCAS Equal Consideration: Jan 29',
-    description: 'Pure academic meritocracy. 80% of the UCAS personal statement must analyze advanced subject readings, computational problem sets, and mathematical rigor.'
-  },
-  {
-    id: 'cardiff_pathway',
-    name: 'Cardiff University (International Year One)',
-    location: 'Cardiff, Wales',
-    country: 'UK',
-    tier: 'Selective Direct-Admit',
-    acceptanceRate: '~80%',
+    acceptanceRate: '~6%',
     portfolioType: 'AIF / Technical Form',
-    primaryPortal: 'Cardiff Direct / StudyGroup Portal',
-    facultyReview: false,
-    recommendedSpike: 'High school graduation with 65%+ in Math; guaranteed progression into Year 2 of BSc Computer Science.',
-    keyDeadlines: 'Rolling (Intake: Sept / Jan)',
-    description: 'Russell Group member offering a structured International Year One pathway with guaranteed Year 2 progression and £2k–£10k scholarships.'
-  },
-  {
-    id: 'portsmouth',
-    name: 'University of Portsmouth',
-    location: 'Portsmouth',
-    country: 'UK',
-    tier: 'Selective Direct-Admit',
-    acceptanceRate: '~70%',
-    portfolioType: 'Direct Video/Paper',
-    primaryPortal: 'UCAS / Direct Portal',
+    primaryPortal: 'NUS International Portal',
     facultyReview: true,
-    recommendedSpike: 'Documented programming portfolio demonstrating object-oriented code, software design patterns, and live web apps.',
-    keyDeadlines: 'Rolling Admissions / UCAS Jan',
-    description: 'Requires a comprehensive project portfolio for advanced MEng CS entry, demonstrating practical code snippets and problem-solving.'
-  },
-
-  // Europe & Germany - Public Universities & Open Admission
-  {
-    id: 'eth',
-    name: 'ETH Zurich',
-    location: 'Zurich',
-    country: 'Europe',
-    tier: 'Pinnacle / Ivy+',
-    acceptanceRate: '~25% (First Year Reduction Exam: ~50% pass)',
-    portfolioType: 'Research Preprint',
-    primaryPortal: 'ETH Online Application Portal',
-    facultyReview: true,
-    recommendedSpike: 'Extreme mathematics and physics proficiency (equivalent to AP Calc BC + Multivariable + Mechanics) + research portfolio.',
-    keyDeadlines: 'Application Window: Nov 1 – Dec 15',
-    description: 'Europe’s top technical university. Requires rigorous academic prerequisites in STEM subjects with strong value placed on scientific publication.'
+    recommendedSpike: 'Class 12 Board score 97%+, National Olympiad medal (INMO, INOI, INPhO), and verified international preprints.',
+    keyDeadlines: 'Intl Application: Mid-Feb',
+    description: 'Ranks top 10 globally in CS. Employs a strict academic filter combined with Exceptional Talent / Outstanding Achievements portfolio reviews.'
   },
   {
-    id: 'tum',
-    name: 'Technical University of Munich (TUM)',
-    location: 'Munich, Bavaria',
-    country: 'Europe',
+    id: 'ntu',
+    name: 'Nanyang Technological University (NTU)',
+    location: 'Singapore',
+    country: 'Singapore',
     tier: 'Global Top 30',
-    acceptanceRate: '~18%',
+    acceptanceRate: '~10% (CCDS: <6%)',
     portfolioType: 'AIF / Technical Form',
-    primaryPortal: 'TUMonline (Aptitude Assessment)',
+    primaryPortal: 'NTU International Portal',
     facultyReview: true,
-    recommendedSpike: 'Rigorous calculus background, German language/English proficiency, and written essay on computational engineering challenges.',
-    keyDeadlines: 'Winter Semester: May 15 – July 15',
-    description: 'Germany’s #1 university for Computer Science and Informatics. Uses a 2-stage Aptitude Assessment Process (Curriculum Analysis + Interview).'
+    recommendedSpike: 'Olympiad distinctions, published scientific research in peer-reviewed journals, and top board percentiles.',
+    keyDeadlines: 'Application Window: Late Feb',
+    description: 'College of Computing and Data Science (CCDS) offers direct admissions and CN Yang Scholars tracks for students with deep scientific portfolios.'
   },
-  {
-    id: 'chemnitz',
-    name: 'Chemnitz University of Technology',
-    location: 'Chemnitz, Saxony',
-    country: 'Europe',
-    tier: 'Selective Direct-Admit',
-    acceptanceRate: '~71%',
-    portfolioType: 'Direct Video/Paper',
-    primaryPortal: 'Uni-Assist / Direct Portal',
-    facultyReview: false,
-    recommendedSpike: 'Solid foundational mathematics; German/English B2/C1 qualification for tuition-free public university entry.',
-    keyDeadlines: 'Winter: July 15 | Summer: Jan 15',
-    description: 'German public university with zero tuition fees and high international acceptance for applied computer science degrees.'
-  },
-  {
-    id: 'augsburg',
-    name: 'University of Augsburg',
-    location: 'Augsburg, Bavaria',
-    country: 'Europe',
-    tier: 'Selective Direct-Admit',
-    acceptanceRate: '~69%',
-    portfolioType: 'Direct Video/Paper',
-    primaryPortal: 'Uni-Assist',
-    facultyReview: false,
-    recommendedSpike: 'High school math/physics credits and recognized German/English language certificate.',
-    keyDeadlines: 'Winter: July 15',
-    description: 'Public Bavarian university with high acceptance rates for Computer Science in Engineering, featuring nominal administration fees.'
-  },
-  {
-    id: 'deggendorf',
-    name: 'Deggendorf Institute of Technology (DIT)',
-    location: 'Deggendorf, Bavaria',
-    country: 'Europe',
-    tier: 'Selective Direct-Admit',
-    acceptanceRate: '~60%',
-    portfolioType: 'Direct Video/Paper',
-    primaryPortal: 'DIT Primuss Portal',
-    facultyReview: false,
-    recommendedSpike: 'Applied computing project write-ups and successful completion of DIT online assessment test.',
-    keyDeadlines: 'Application: April 15 – July 15',
-    description: 'Leading Bavarian UAS offering 100% English-taught Bachelor programs in Applied Computer Science and AI with direct industry internships.'
-  },
-  {
-    id: 'furtwangen',
-    name: 'Furtwangen University (HFU)',
-    location: 'Furtwangen, Baden-Württemberg',
-    country: 'Europe',
-    tier: 'Selective Direct-Admit',
-    acceptanceRate: 'Open Admission (Zulassungsfrei)',
-    portfolioType: 'Direct Video/Paper',
-    primaryPortal: 'HFU Online Portal',
-    facultyReview: false,
-    recommendedSpike: 'Direct high school completion meeting statutory entry requirements (B.Sc. Security & Safety Engineering).',
-    keyDeadlines: 'Winter: July 15',
-    description: 'Offers Zulassungsfrei (open admission without numerus clausus restriction) for specialized engineering programs combining IT security and systems.'
-  },
-
-  // Australia - Go8 & High-Employability Technology Hubs
   {
     id: 'unsw',
     name: 'UNSW Sydney (Univ. of New South Wales)',
@@ -546,20 +658,6 @@ export const UNIVERSITIES: University[] = [
     description: 'Major Australian tech institute known as "the university for the real world," offering high acceptance rates and deep industry-linked engineering degrees.'
   },
   {
-    id: 'swinburne',
-    name: 'Swinburne University of Technology',
-    location: 'Melbourne, Victoria',
-    country: 'Australia',
-    tier: 'Selective Direct-Admit',
-    acceptanceRate: '~70%',
-    portfolioType: 'Direct Video/Paper',
-    primaryPortal: 'Swinburne International Portal',
-    facultyReview: false,
-    recommendedSpike: 'Game design assets, code demos, or creative technology builds demonstrating software development capability.',
-    keyDeadlines: 'Semester 1: Jan | Semester 2: June',
-    description: 'Renowned for practical tech and game development (BCS Games Development) with guaranteed work-integrated learning placements.'
-  },
-  {
     id: 'latrobe',
     name: 'La Trobe University',
     location: 'Melbourne, Victoria',
@@ -572,5 +670,19 @@ export const UNIVERSITIES: University[] = [
     recommendedSpike: 'Academic profile demonstrating quantitative problem solving and practical software engineering interests.',
     keyDeadlines: 'Semester 1: Jan | Semester 2: June',
     description: 'Offers flexible entry requirements for Software Engineering with accessible admission criteria and substantial international scholarships.'
+  },
+  {
+    id: 'eth',
+    name: 'ETH Zurich',
+    location: 'Zurich',
+    country: 'Europe / Asia',
+    tier: 'Pinnacle / Ivy+',
+    acceptanceRate: '~25% (First Year Reduction Exam: ~50% pass)',
+    portfolioType: 'Research Preprint',
+    primaryPortal: 'ETH Online Application Portal',
+    facultyReview: true,
+    recommendedSpike: 'Extreme mathematics and physics proficiency (equivalent to AP Calc BC + Multivariable + Mechanics) + research portfolio.',
+    keyDeadlines: 'Application Window: Nov 1 – Dec 15',
+    description: 'Europe’s top technical university. Requires rigorous academic prerequisites in STEM subjects with strong value placed on scientific publication.'
   }
 ];

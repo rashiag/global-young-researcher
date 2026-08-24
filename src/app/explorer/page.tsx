@@ -11,7 +11,7 @@ export default function ExplorerPage() {
   const [selectedPortfolio, setSelectedPortfolio] = useState('All');
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
-  const countries = ['All', 'USA', 'UK', 'Europe', 'Canada', 'Singapore', 'Australia', 'New Zealand', 'Asia'];
+  const countries = ['All', 'USA', 'UK', 'Italy', 'Germany', 'New Zealand', 'Canada', 'Australia', 'Singapore', 'Europe / Asia'];
   const tiers = ['All', 'Pinnacle / Ivy+', 'Global Top 30', 'High-ROI STEM', 'Selective Direct-Admit'];
   const portfolioTypes = [
     'All',
@@ -24,11 +24,14 @@ export default function ExplorerPage() {
 
   const filteredUniversities = useMemo(() => {
     return UNIVERSITIES.filter((uni: University) => {
+      const q = searchQuery.toLowerCase().trim();
       const matchesSearch =
-        uni.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        uni.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        uni.recommendedSpike.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        uni.description.toLowerCase().includes(searchQuery.toLowerCase());
+        !q ||
+        uni.name.toLowerCase().includes(q) ||
+        uni.location.toLowerCase().includes(q) ||
+        uni.country.toLowerCase().includes(q) ||
+        uni.recommendedSpike.toLowerCase().includes(q) ||
+        uni.description.toLowerCase().includes(q);
 
       const matchesCountry = selectedCountry === 'All' || uni.country === selectedCountry;
       const matchesTier = selectedTier === 'All' || uni.tier === selectedTier;
@@ -76,7 +79,7 @@ export default function ExplorerPage() {
             Global STEM University Directory
           </h1>
           <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
-            Analyze exact portfolio evaluation mechanisms, departmental faculty review policies, and research spikes required across 70+ top-tier global institutions (US, UK, Europe, Italy, Germany, Canada, Australia & New Zealand).
+            Analyze exact portfolio evaluation mechanisms, departmental faculty review policies, and research spikes required across top-tier international institutions in the US, UK, Italy, Germany, New Zealand, Canada, and Australia.
           </p>
         </div>
 
@@ -104,9 +107,9 @@ export default function ExplorerPage() {
 
           {/* Filter Pills */}
           <div className="space-y-4 text-xs">
-            {/* Region */}
+            {/* Country / Destination */}
             <div className="flex flex-col sm:flex-row sm:items-center gap-2">
-              <span className="text-slate-400 font-semibold w-20 shrink-0">Region:</span>
+              <span className="text-slate-400 font-semibold w-24 shrink-0">Destination:</span>
               <div className="flex flex-wrap gap-1.5">
                 {countries.map((c) => (
                   <button
@@ -126,7 +129,7 @@ export default function ExplorerPage() {
 
             {/* Selectivity */}
             <div className="flex flex-col sm:flex-row sm:items-center gap-2">
-              <span className="text-slate-400 font-semibold w-20 shrink-0">Selectivity:</span>
+              <span className="text-slate-400 font-semibold w-24 shrink-0">Selectivity:</span>
               <div className="flex flex-wrap gap-1.5">
                 {tiers.map((t) => (
                   <button
@@ -146,7 +149,7 @@ export default function ExplorerPage() {
 
             {/* Portfolio Mechanism */}
             <div className="flex flex-col sm:flex-row sm:items-center gap-2">
-              <span className="text-slate-400 font-semibold w-20 shrink-0">Portfolio:</span>
+              <span className="text-slate-400 font-semibold w-24 shrink-0">Portfolio:</span>
               <div className="flex flex-wrap gap-1.5">
                 {portfolioTypes.map((p) => (
                   <button
