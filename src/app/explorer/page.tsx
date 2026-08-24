@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { UNIVERSITIES } from '@/data/universities';
+import { UNIVERSITIES, University } from '@/data/universities';
 
 export default function ExplorerPage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -13,10 +13,17 @@ export default function ExplorerPage() {
 
   const countries = ['All', 'USA', 'UK', 'Canada', 'Singapore', 'Europe'];
   const tiers = ['All', 'Pinnacle / Ivy+', 'Global Top 30', 'High-ROI STEM'];
-  const portfolioTypes = ['All', 'SlideRoom Maker', 'Research Preprint', 'AIF / Technical Form', 'UCAS Technical Narrative', 'Direct Video/Paper'];
+  const portfolioTypes = [
+    'All',
+    'SlideRoom Maker',
+    'Research Preprint',
+    'AIF / Technical Form',
+    'UCAS Technical Narrative',
+    'Direct Video/Paper'
+  ];
 
   const filteredUniversities = useMemo(() => {
-    return UNIVERSITIES.filter((uni) => {
+    return UNIVERSITIES.filter((uni: University) => {
       const matchesSearch =
         uni.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         uni.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -31,78 +38,83 @@ export default function ExplorerPage() {
   }, [searchQuery, selectedCountry, selectedTier, selectedPortfolio]);
 
   return (
-    <div className="min-h-screen bg-[#070B14] text-slate-100 font-sans pb-24">
-      {/* Header */}
-      <div className="border-b border-slate-800/80 bg-[#0B1120]/80 backdrop-blur-md sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div className="min-h-screen bg-[#030712] text-slate-100 antialiased">
+      {/* Navigation Bar */}
+      <header className="sticky top-0 z-50 border-b border-slate-800/80 bg-[#0B0F19]/90 backdrop-blur-xl">
+        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
-            <span className="text-xl font-bold bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">
-              Young Researcher <span className="text-slate-400 font-light text-base">Global</span>
+            <span className="text-lg font-bold bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">
+              Young Researcher <span className="text-slate-400 font-light text-sm">Global</span>
             </span>
           </Link>
           <div className="flex items-center space-x-4">
-            <Link href="/" className="text-xs text-slate-400 hover:text-white transition-colors">
-              ← Back to Hub
+            <Link
+              href="/"
+              className="text-xs font-medium text-slate-400 hover:text-white transition-colors"
+            >
+              ← Back to Overview
             </Link>
             <Link
               href="/#assessment"
-              className="bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-all"
+              className="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-4 py-2 text-xs font-semibold text-white shadow-lg shadow-indigo-500/20 hover:bg-indigo-500 transition-all"
             >
-              Schedule Diagnostic
+              Schedule Assessment
             </Link>
           </div>
         </div>
-      </div>
+      </header>
 
-      {/* Main Container */}
-      <main className="max-w-7xl mx-auto px-6 pt-12">
-        <div className="mb-10 text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/20 text-blue-300 text-xs font-medium mb-4">
-            <span>🏛️ Global Admissions & Portfolio Directory</span>
+      {/* Main Content Area */}
+      <main className="max-w-7xl mx-auto px-6 py-12">
+        {/* Header Hero */}
+        <div className="max-w-3xl mx-auto text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-medium mb-4">
+            <span>🏛️ Admissions & Portfolio Intelligence</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-4">
-            Top STEM Universities & Portfolio Requirements
+          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
+            Global STEM University Directory
           </h1>
-          <p className="text-sm sm:text-base text-slate-400">
-            Explore how the world’s elite engineering and computer science programs evaluate maker portfolios, published preprints, and technical supplements.
+          <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
+            Analyze exact portfolio evaluation mechanisms, departmental faculty review policies, and research spikes required across top-tier international institutions.
           </p>
         </div>
 
-        {/* Filters */}
-        <div className="bg-[#0D1527] border border-slate-800 rounded-2xl p-6 mb-10 shadow-xl">
-          <div className="mb-6">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Search by university name, location, or research keyword..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-[#070B14] border border-slate-700/80 rounded-xl px-4 py-3.5 pl-11 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition-colors"
-              />
-              <span className="absolute left-4 top-3.5 text-slate-500">🔍</span>
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery('')}
-                  className="absolute right-4 top-3.5 text-xs text-slate-400 hover:text-white"
-                >
-                  Clear
-                </button>
-              )}
-            </div>
+        {/* Filter Control Center */}
+        <div className="bg-[#0B1120] border border-slate-800 rounded-2xl p-6 sm:p-8 mb-10 shadow-2xl">
+          {/* Search Input */}
+          <div className="relative mb-6">
+            <input
+              type="text"
+              placeholder="Search by university name, city, or research topic (e.g. AI, Systems, Math)..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full bg-[#030712] border border-slate-700/80 rounded-xl px-4 py-3.5 pl-11 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+            />
+            <span className="absolute left-4 top-3.5 text-slate-500 text-sm">🔍</span>
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery('')}
+                className="absolute right-4 top-3.5 text-xs text-slate-400 hover:text-white"
+              >
+                Clear
+              </button>
+            )}
           </div>
 
+          {/* Tag Filters */}
           <div className="space-y-4 text-xs">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="text-slate-400 font-semibold w-24">Country:</span>
+            {/* Country */}
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+              <span className="text-slate-400 font-semibold w-20 shrink-0">Region:</span>
               <div className="flex flex-wrap gap-1.5">
                 {countries.map((c) => (
                   <button
                     key={c}
                     onClick={() => setSelectedCountry(c)}
-                    className={`px-3 py-1.5 rounded-lg border transition-all ${
+                    className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${
                       selectedCountry === c
-                        ? 'bg-indigo-600 border-indigo-500 text-white shadow-sm'
-                        : 'bg-[#070B14] border-slate-800 text-slate-400 hover:border-slate-700 hover:text-white'
+                        ? 'bg-indigo-600 border-indigo-500 text-white shadow-md shadow-indigo-600/30'
+                        : 'bg-[#030712] border-slate-800 text-slate-400 hover:border-slate-700 hover:text-white'
                     }`}
                   >
                     {c}
@@ -111,17 +123,18 @@ export default function ExplorerPage() {
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="text-slate-400 font-semibold w-24">Tier:</span>
+            {/* Selectivity Tier */}
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+              <span className="text-slate-400 font-semibold w-20 shrink-0">Selectivity:</span>
               <div className="flex flex-wrap gap-1.5">
                 {tiers.map((t) => (
                   <button
                     key={t}
                     onClick={() => setSelectedTier(t)}
-                    className={`px-3 py-1.5 rounded-lg border transition-all ${
+                    className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${
                       selectedTier === t
-                        ? 'bg-blue-600 border-blue-500 text-white shadow-sm'
-                        : 'bg-[#070B14] border-slate-800 text-slate-400 hover:border-slate-700 hover:text-white'
+                        ? 'bg-blue-600 border-blue-500 text-white shadow-md shadow-blue-600/30'
+                        : 'bg-[#030712] border-slate-800 text-slate-400 hover:border-slate-700 hover:text-white'
                     }`}
                   >
                     {t}
@@ -130,17 +143,18 @@ export default function ExplorerPage() {
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="text-slate-400 font-semibold w-24">Portfolio:</span>
+            {/* Portfolio Type */}
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+              <span className="text-slate-400 font-semibold w-20 shrink-0">Portfolio:</span>
               <div className="flex flex-wrap gap-1.5">
                 {portfolioTypes.map((p) => (
                   <button
                     key={p}
                     onClick={() => setSelectedPortfolio(p)}
-                    className={`px-3 py-1.5 rounded-lg border transition-all ${
+                    className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${
                       selectedPortfolio === p
-                        ? 'bg-purple-600 border-purple-500 text-white shadow-sm'
-                        : 'bg-[#070B14] border-slate-800 text-slate-400 hover:border-slate-700 hover:text-white'
+                        ? 'bg-purple-600 border-purple-500 text-white shadow-md shadow-purple-600/30'
+                        : 'bg-[#030712] border-slate-800 text-slate-400 hover:border-slate-700 hover:text-white'
                     }`}
                   >
                     {p}
@@ -151,10 +165,10 @@ export default function ExplorerPage() {
           </div>
         </div>
 
-        {/* Counter */}
-        <div className="flex justify-between items-center mb-6 px-1">
+        {/* Counter and Reset */}
+        <div className="flex justify-between items-center mb-6">
           <p className="text-xs text-slate-400">
-            Showing <span className="font-bold text-white">{filteredUniversities.length}</span> top programs
+            Displaying <span className="font-bold text-white">{filteredUniversities.length}</span> curated programs
           </p>
           {(selectedCountry !== 'All' || selectedTier !== 'All' || selectedPortfolio !== 'All' || searchQuery) && (
             <button
@@ -166,12 +180,12 @@ export default function ExplorerPage() {
               }}
               className="text-xs text-indigo-400 hover:underline"
             >
-              Reset All Filters
+              Reset Filters
             </button>
           )}
         </div>
 
-        {/* Grid */}
+        {/* University Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredUniversities.map((uni) => {
             const isExpanded = expandedId === uni.id;
@@ -179,83 +193,90 @@ export default function ExplorerPage() {
             return (
               <div
                 key={uni.id}
-                className="bg-[#0D1527] border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition-all duration-300 shadow-lg"
+                className="bg-[#0B1120] border border-slate-800/90 hover:border-indigo-500/50 rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 shadow-xl group"
               >
                 <div>
+                  {/* Top Metadata */}
                   <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className="text-[11px] font-semibold tracking-wide uppercase px-2.5 py-0.5 rounded-full bg-slate-800 border border-slate-700 text-slate-300">
+                    <span className="text-[10px] font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-full bg-slate-800 border border-slate-700 text-slate-300">
                       {uni.country}
                     </span>
-                    <span className="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-indigo-500/10 border border-indigo-400/20 text-indigo-300">
+                    <span className="text-[10px] font-semibold px-2.5 py-0.5 rounded-full bg-indigo-500/10 border border-indigo-400/20 text-indigo-300">
                       {uni.tier}
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-white mb-1 leading-snug">
+                  {/* Program Title */}
+                  <h3 className="text-lg font-bold text-white mb-1 leading-snug group-hover:text-indigo-200 transition-colors">
                     {uni.name}
                   </h3>
-                  <p className="text-xs text-slate-400 mb-4">{uni.location}</p>
+                  <p className="text-xs text-slate-400 mb-5">{uni.location}</p>
 
-                  <div className="grid grid-cols-2 gap-2 bg-[#070B14] p-3 rounded-xl border border-slate-800/80 mb-4 text-xs">
+                  {/* Quantitative Box */}
+                  <div className="grid grid-cols-2 gap-2 bg-[#030712] p-3.5 rounded-xl border border-slate-800/80 mb-4">
                     <div>
-                      <span className="text-slate-500 block text-[10px] uppercase font-bold">Selectivity</span>
-                      <span className="font-semibold text-emerald-400">{uni.acceptanceRate}</span>
+                      <span className="text-[10px] uppercase font-bold text-slate-500 block mb-0.5">Selectivity</span>
+                      <span className="text-xs font-semibold text-emerald-400">{uni.acceptanceRate}</span>
                     </div>
                     <div>
-                      <span className="text-slate-500 block text-[10px] uppercase font-bold">Faculty Review</span>
-                      <span className={`font-semibold ${uni.facultyReview ? 'text-amber-300' : 'text-slate-400'}`}>
+                      <span className="text-[10px] uppercase font-bold text-slate-500 block mb-0.5">Faculty Review</span>
+                      <span className={`text-xs font-semibold ${uni.facultyReview ? 'text-amber-300' : 'text-slate-400'}`}>
                         {uni.facultyReview ? 'Yes (Department)' : 'Admissions Board'}
                       </span>
                     </div>
                   </div>
 
+                  {/* Portfolio Badge */}
                   <div className="mb-4">
-                    <span className="text-[11px] text-slate-400 block mb-1 font-semibold">Portfolio Mechanism:</span>
+                    <span className="text-[11px] text-slate-400 font-semibold block mb-1.5">Portfolio Submission:</span>
                     <span className="inline-block bg-purple-950/40 border border-purple-500/30 text-purple-300 text-xs px-2.5 py-1 rounded-lg">
                       {uni.portfolioType}
                     </span>
                   </div>
 
-                  <p className="text-xs text-slate-300 leading-relaxed mb-4">
+                  {/* Description */}
+                  <p className="text-xs text-slate-300 leading-relaxed mb-5">
                     {uni.description}
                   </p>
 
+                  {/* Expandable Technical Details */}
                   {isExpanded && (
-                    <div className="pt-4 border-t border-slate-800 space-y-3 text-xs">
+                    <div className="pt-4 border-t border-slate-800/80 space-y-3.5 text-xs">
                       <div>
-                        <span className="text-slate-400 font-semibold block text-[11px] mb-1">
+                        <span className="text-slate-400 font-semibold block text-[11px] mb-1.5">
                           🎯 Recommended Research Spike:
                         </span>
-                        <p className="text-slate-300 bg-[#070B14] p-3 rounded-lg border border-slate-800 leading-relaxed">
+                        <div className="text-slate-200 bg-[#030712] p-3 rounded-lg border border-slate-800 leading-relaxed">
                           {uni.recommendedSpike}
-                        </p>
+                        </div>
                       </div>
 
-                      <div className="grid grid-cols-1 gap-2 pt-1">
+                      <div className="grid grid-cols-1 gap-2 pt-1 text-slate-300">
                         <div>
-                          <span className="text-slate-400 font-semibold block text-[10px] uppercase">Application Portal</span>
-                          <span className="text-slate-300 text-xs">{uni.primaryPortal}</span>
+                          <span className="text-slate-500 font-semibold block text-[10px] uppercase">Portal</span>
+                          <span className="text-xs">{uni.primaryPortal}</span>
                         </div>
                         <div>
-                          <span className="text-slate-400 font-semibold block text-[10px] uppercase">Key Deadlines</span>
-                          <span className="text-slate-300 text-xs">{uni.keyDeadlines}</span>
+                          <span className="text-slate-500 font-semibold block text-[10px] uppercase">Deadlines</span>
+                          <span className="text-xs">{uni.keyDeadlines}</span>
                         </div>
                       </div>
                     </div>
                   )}
                 </div>
 
-                <div className="pt-4 mt-4 border-t border-slate-800/80 flex items-center justify-between">
+                {/* Bottom Actions */}
+                <div className="pt-4 mt-5 border-t border-slate-800/80 flex items-center justify-between">
                   <button
                     onClick={() => setExpandedId(isExpanded ? null : uni.id)}
                     className="text-xs font-semibold text-indigo-400 hover:text-indigo-300 transition-colors"
                   >
-                    {isExpanded ? 'Hide Details ↑' : 'View Portfolio Strategy ↓'}
+                    {isExpanded ? 'Hide Strategy ↑' : 'View Research Strategy ↓'}
                   </button>
 
                   <Link
                     href="/#assessment"
-                    className="text-xs bg-slate-800 hover:bg-slate-700 text-white px-3 py-1.5 rounded-lg border border-slate-700 transition-colors"
+                    className="text-xs bg-slate-800 hover:bg-slate-700 text-slate-100 font-medium px-3.5 py-1.5 rounded-lg border border-slate-700 hover:border-slate-600 transition-all"
                   >
                     Assess Fit
                   </Link>
