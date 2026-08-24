@@ -9,7 +9,7 @@ export default function ExplorerPage() {
   const [selectedCountry, setSelectedCountry] = useState('All');
   const [selectedTier, setSelectedTier] = useState('All');
   const [selectedPortfolio, setSelectedPortfolio] = useState('All');
-  const [expandedId, setExpandedId] = useState(null);
+  const [expandedId, setExpandedId] = useState<string | null>(null);
 
   const countries = ['All', 'USA', 'UK', 'Canada', 'Singapore', 'Europe'];
   const tiers = ['All', 'Pinnacle / Ivy+', 'Global Top 30', 'High-ROI STEM'];
