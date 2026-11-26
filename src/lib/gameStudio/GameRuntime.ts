@@ -285,7 +285,7 @@ export class GameRuntime {
       const dist = Math.hypot(srcBody.entity.x - tgtBody.entity.x, srcBody.entity.y - tgtBody.entity.y);
 
       if (dist < r1 + r2) {
-        if (srcBody.hitCooldown > 0 && tgtBody.hitCooldown > 0) continue;
+        if (srcBody.hitCooldown > 0 || tgtBody.hitCooldown > 0) continue;
         srcBody.hitCooldown = 0.45;
         tgtBody.hitCooldown = 0.25;
         this.applyRuleActions(rule, srcBody, tgtBody, playAudio);
@@ -346,6 +346,8 @@ export class GameRuntime {
         case "lose_life": {
           const dec = act.value ?? 1;
           this.lives = Math.max(0, this.lives - dec);
+          if (srcBody) srcBody.hitCooldown = 0.9;
+          if (tgtBody) { tgtBody.hitCooldown = 0.9; if (tgtBody.entity.behavior.type === "straight_line_to_target") this.respawnAtTop(tgtBody); else tgtBody.entity.y = Math.max(60, tgtBody.entity.y - 45); }
           if (srcBody) {
             this.squash(srcBody.entity.id, 1.25, 0.78);
             this.spawnPop(srcBody.entity.x, srcBody.entity.y - 30, `-${dec} ❤️`, "#fb7185");
@@ -407,6 +409,7 @@ export class GameRuntime {
     b.entity.x = 70 + Math.random() * (CanvasRenderer.STAGE_WIDTH - 140);
     b.entity.y = 55;
     b.spawnTimer = 0;
+    b.hitCooldown = 0.4;
   }
 
   private squash(entityId: string, sx: number, sy: number): void {
