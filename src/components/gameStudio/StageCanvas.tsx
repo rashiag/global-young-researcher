@@ -71,34 +71,17 @@ export default function StageCanvas({
   }, [blueprint]);
 
   const latestBlueprintRef = useRef<GameBlueprint>(blueprint);
-  const lastCompiledSigRef = useRef<string>("");
 
   useEffect(() => {
     latestBlueprintRef.current = blueprint;
   }, [blueprint]);
 
-  // Reset runtime when entering Play Mode, restarting, or when blueprint rules/entities change
+  // Reset runtime only when entering Play Mode or clicking Restart / Build
   useEffect(() => {
-    if (mode !== "play" || !runtimeRef.current) return;
-    const sig = JSON.stringify({
-      session: playSessionKey,
-      title: blueprint.title,
-      world: blueprint.world,
-      entities: blueprint.entities.map((e) => ({
-        id: e.id,
-        spriteKey: e.spriteKey,
-        x: e.x,
-        y: e.y,
-        scale: e.scale,
-        behavior: e.behavior,
-      })),
-      rules: blueprint.rules,
-    });
-    if (sig !== lastCompiledSigRef.current) {
-      lastCompiledSigRef.current = sig;
+    if (mode === "play" && runtimeRef.current) {
       runtimeRef.current.reset(latestBlueprintRef.current);
     }
-  }, [mode, playSessionKey, blueprint]);
+  }, [mode, playSessionKey]);
 
   // Keyboard listeners for Play Mode
   useEffect(() => {
