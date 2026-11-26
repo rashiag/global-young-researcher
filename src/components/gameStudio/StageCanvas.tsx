@@ -87,9 +87,17 @@ export default function StageCanvas({
   useEffect(() => {
     if (mode !== "play") return;
 
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
+
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", " "].includes(e.key)) {
+      if (["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", " ", "Enter"].includes(e.key)) {
         e.preventDefault();
+      }
+      if (e.key === "Enter") {
+        e.stopPropagation();
+        return;
       }
       if (e.key === "ArrowLeft" || e.key === "a" || e.key === "A") inputRef.current.left = true;
       if (e.key === "ArrowRight" || e.key === "d" || e.key === "D") inputRef.current.right = true;
