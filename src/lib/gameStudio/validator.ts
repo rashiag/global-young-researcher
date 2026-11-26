@@ -74,7 +74,7 @@ export function validateBlueprint(raw: unknown, fallback: GameBlueprint): GameBl
 
   const validIds = new Set(entities.map((e) => e.id));
 
-  const rules: GameRule[] = Array.isArray(candidate.rules)
+  const rules: GameRule[] = (Array.isArray(candidate.rules) && candidate.rules.length > 0)
     ? candidate.rules
         .filter((r): r is GameRule => Boolean(r && typeof r === "object" && typeof r.trigger?.type === "string"))
         .map((r, idx) => {
